@@ -14,6 +14,7 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
       background: #202020;
+      height: 100%;
     }
 
     .game-container {
@@ -23,6 +24,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
 
     .road {
@@ -33,11 +35,14 @@
       background: linear-gradient(to bottom, #4a4a4a, #2e2e2e);
       border: 5px solid #000;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end; /* Aligns elements to the bottom */
     }
 
     #car {
       position: absolute;
-      bottom: 5%;
+      bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
       width: 10%; /* Relative width for responsiveness */
@@ -65,15 +70,14 @@
       font-size: 1.5rem;
       border-radius: 10px;
       z-index: 10;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       display: none;
+      align-items: center;
+      justify-content: center;
     }
 
     .controls {
       position: absolute;
-      bottom: 5%;
+      bottom: 10%; /* Adjust for spacing */
       width: 100%;
       display: flex;
       justify-content: space-evenly;

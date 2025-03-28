@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darshan Pokhrel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1728319198756-00ae86703420?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fER8ZW58MHx8MHx8fDA%3D">
-    
+    <link rel="icon" type="image/png"
+        href="https://images.unsplash.com/photo-1728319198756-00ae86703420?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fER8ZW58MHx8MHx8fDA%3D">
 
     <style>
         * {
             margin: 0;
+            user-select: none;
             padding: 0;
             box-sizing: border-box;
         }
-        html{
+
+        html {
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background: #f4f4f9;
+            background: #f9f9f9;
             color: #333;
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
         }
 
         /* Navbar */
@@ -30,42 +36,21 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background: #333;
+            background: #2a2a72;
             color: white;
             position: fixed;
-            min-height: 10vmin;
             width: 100%;
             top: 0;
             z-index: 1000;
         }
-        .gameCollection a{
-            font-size: 4vmax;
-            color: #000;
-            text-decoration: 0.3vmax underline dotted;
-        }
-        .gameCollection{
-            width: 100%;
-            min-height: 10vmin;
-            background-color: #b4b4b4;
-            display: grid;
-            padding: 1vmax 0;
-            place-items: center;
-        }
-        .logo {
-            min-height: 10vmin;
-            width: 10vmin;
-            font-size: 1.5rem;
-            display: grid;
-            place-items: center;
-            font-weight: bold;
-            pointer-events: none;
-        }
-        .logo img{
+
+        .logo img {
             border-radius: 50%;
             width: 8vmin;
             object-fit: cover;
             height: 8vmin;
         }
+
         .nav-links {
             list-style: none;
             display: flex;
@@ -87,6 +72,11 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
+        }
+
+        .logo img {
+            object-fit: cover;
+            object-position: top;
         }
 
         .hamburger div {
@@ -113,9 +103,7 @@
             text-decoration: none;
             padding: 0.5rem;
         }
-        .contact p{
-            text-align: justify;
-        }
+
         .nav-mobile a:hover {
             background: #555;
             border-radius: 5px;
@@ -124,15 +112,15 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(to right, #ff7e5f,  #3c2258);
-
-
+            background: linear-gradient(to right, #1abc9c, #6f4f37);
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             text-align: center;
             padding: 2rem;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .hero-text h1 {
@@ -160,22 +148,65 @@
             background-color: #e64a19;
         }
 
-        /* Sections */
-        section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .about, .contact {
+        /* New Sections */
+        .services,
+        .projects,
+        .skills,
+        .games {
             background-color: #fff;
+            padding: 3rem 2rem;
             margin: 2rem 0;
+            text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            padding: 2rem;
             animation: fadeInUp 1.5s ease-in-out;
         }
 
-        /* Footer */
+        .services h2,
+        .projects h2,
+        .skills h2,
+        .games h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services ul,
+        .projects ul,
+        .skills ul,
+        .games ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .services li,
+        .projects li,
+        .skills li,
+        .games li {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .games li {
+            border: 1px solid #1abc9c;
+        }
+
+        .services li:hover,
+        .projects li:hover,
+        .skills li:hover,
+        .games li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .games ul {
+            width: 100%;
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
@@ -185,20 +216,17 @@
             align-items: center;
             gap: 1vmin;
             color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
-        .link{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1vmin;
-        }
-        footer p, .link a{
-            font-size: 3vmin;
-        }
-        .link a{
+
+        .link a {
             text-decoration: none;
             color: #fff;
+            /* font-size: 2.5vmin; */
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -220,6 +248,13 @@
             .nav-mobile {
                 display: none;
             }
+
+            .services ul,
+            .projects ul,
+            .skills ul,
+            .games ul {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Animations */
@@ -228,6 +263,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -239,30 +275,256 @@
                 transform: translateY(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
-        .contact h2:last-child{
-            font-size: 2.8vmax;
-        }
+
         @keyframes bounceIn {
             0% {
                 transform: scale(0.9);
             }
+
             50% {
                 transform: scale(1.1);
             }
+
             100% {
                 transform: scale(1);
             }
         }
-        .logo img{
-            object-position: top;
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .about {
+            background: linear-gradient(to right, #3498db, #9b59b6);
+            /* Blue to Purple Gradient */
+            color: white;
+            padding: 40px 20px;
+            margin: 40px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            transition: all 0.3s ease-in-out;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-top: 10px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Hover Effects */
+        .about:hover {
+            background: linear-gradient(to right, #9b59b6, #3498db);
+            /* Invert gradient on hover */
+            transform: translateY(-10px);
+            /* Slight lift effect */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact {
+            background-color: #f4f4f9;
+            /* Soft background */
+            padding: 40px 20px;
+            margin: 40px auto;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .contact p:last-child {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        /* Hover Effects */
+        .contact:hover {
+            transform: translateY(-5px);
+            /* Lift effect on hover */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            /* Stronger shadow */
+            background-color: #e0e0e0;
+            /* Subtle change in background color */
+        }
+
+        /* Media Query for Small Screens */
+        @media (max-width: 768px) {
+            .contact {
+                width: 95%;
+                padding: 20px 10px;
+            }
+
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            .contact p {
+                font-size: 1rem;
+            }
+        }
+
+        #gamesContain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .containerRotate {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50vh;
+        }
+
+        /* Styling for the 3D scene */
+        .scene {
+            perspective: 800px;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        /* Styling for the cuboid */
+        .cuboid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(45deg);
+            animation: rotateAnimation 6s infinite linear;
+        }
+
+        /* Styling for the faces of the cuboid */
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff6f61;
+            border: 2px solid #e84118;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Positions for the faces */
+        .front {
+            transform: translateZ(50px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(50px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(50px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+
+        /* Animation to rotate the cuboid */
+        @keyframes rotateAnimation {
+            0% {
+                transform: rotateX(-30deg) rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateX(-30deg) rotateY(180deg);
+            }
+
+            100% {
+                transform: rotateX(-30deg) rotateY(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <header class="navbar">
         <div class="logo"><img src="profilePic.jpeg" alt="logo"></div>
@@ -275,47 +537,131 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#games">Games</a></li> <!-- New Games button -->
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-mobile">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#games">Games</a> <!-- Mobile version of Games link -->
             <a href="#contact">Contact</a>
         </div>
     </header>
-
+    <div class="forGap" style="visibility: hidden;">
+        <div class="logo"><img src="profilePic.jpeg" alt="logo"></div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#games">Games</a></li> <!-- New Games button -->
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-mobile">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#games">Games</a> <!-- Mobile version of Games link -->
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
     <section id="home" class="hero">
         <div class="hero-text">
             <h1>Welcome to My Website</h1>
-            <p>Hi, I'm Darshan Pokhrel, a student with high interest in civil engineering.</p>
+            <p>Hi, I'm Darshan Pokhrel, a student passionate about civil engineering and technology.</p>
+            <a href="#games" class="cta-btn">Explore Games</a> <!-- Button to Games Section -->
+        </div>
+        <div class="containerRotate">
+            <div class="scene">
+                <div class="cuboid" id="cuboid">
+                    <div class="face front">DARSHAN</div>
+                    <div class="face back">DARSHAN</div>
+                    <div class="face left">DARSHAN</div>
+                    <div class="face right">DARSHAN</div>
+                    <div class="face top">DARSHAN</div>
+                    <div class="face bottom">DARSHAN</div>
+                </div>
+            </div>
         </div>
     </section>
-    <div class="gameCollection">
-        <a href="gamesList.html">Play Games</a>
-    </div>
+
     <section id="about" class="about">
         <h2>About Me</h2>
-        <p>I love hiking and make friends. I am working towards my goal in life.</p>
+        <p>I'm passionate about hiking, making new friends, and constantly learning. I aspire to bring positive change
+            through my studies and work in civil engineering.</p>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="services" class="services">
+        <h2>Services</h2>
+        <ul>
+            <li>Building design and construction consulting</li>
+            <li>Project management and planning</li>
+            <li>Research in sustainable materials and practices</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>Smart City Infrastructure Project</li>
+            <li>Eco-friendly Bridge Design</li>
+            <li>Community Housing Development</li>
+        </ul>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Structural Engineering</li>
+            <li>Autodesk AutoCAD</li>
+            <li>3D Modeling & Simulation</li>
+        </ul>
+    </section>
+
+    <section id="games" class="games">
+        <h2>Games</h2>
+        <p>Explore my favorite games:</p>
+        <ul id="gamesContain">
+            <li style="cursor: pointer;">Click here</li>
+
+        </ul>
+    </section>
+
+    <section id="contact" class="contact" style="padding: 1vmin;  background-color: #b3b3b3;">
         <h2>Contact</h2>
-        <p>Thank you for your interest in reaching out. While we currently do not have a feedback system or database to manage responses, we want to ensure you have the information you need. If you wish to visit us or send any correspondence, please find our address below:</p>
-        
-        <h2>Devchuli-13, Daldale, Nawalpur, Nepal</h2>
+        <p>Feel free to reach out if you'd like to collaborate, learn more about my work, or simply connect!</p>
+        <p>Email: darshanpokhrel44@gmail.com</p>
+        <p>Location: Devchuli-13, Daldale, Nawalpur, Nepal</p>
     </section>
 
     <footer>
-        <p>Copyright &copy; 2024 @ Darshan Pokhrel
-        </p>
-        <div class="link">
-            <a href="https://www.youtube.com/@WINOX_GAMING/shorts" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-            <a target="_blank" href="https://www.facebook.com/profile.php?id=100092640414177"><i class="fa-brands fa-facebook"></i></a>
+        <p>&copy; 2025 Darshan Pokhrel</p>
+        <div class="link" style="padding: 0 1vmin;">
+            <a href="https://www.youtube.com/@7X_WINOX" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100092640414177" target="_blank"><i
+                    class="fa-brands fa-facebook"></i></a>
         </div>
     </footer>
 
     <script>
+        let gamesContain = document.querySelector('#gamesContain li');
         const hamburger = document.querySelector('.hamburger');
         const navMobile = document.querySelector('.nav-mobile');
 
@@ -323,7 +669,11 @@
             navMobile.style.display = navMobile.style.display === 'flex' ? 'none' : 'flex';
         });
 
-    
+        gamesContain.addEventListener(('click'), (e) => {
+            window.open("gamesList.html", "_blank");
+        })
+
     </script>
 </body>
+
 </html>
